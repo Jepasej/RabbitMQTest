@@ -15,6 +15,8 @@ namespace RabbitMQTop
 
             var message = GetMessage(args);
             var body = Encoding.UTF8.GetBytes(message);
+            await channel.QueueDeclareAsync(queue: "pizzaqueue", durable: true, exclusive: false, autoDelete: false);
+            await channel.QueueBindAsync(queue: "pizzaqueue", exchange: "logs", routingKey: string.Empty);
             await channel.BasicPublishAsync(exchange: "logs", routingKey: string.Empty, body: body);
             Console.WriteLine($" [x] Sent {message}");
 

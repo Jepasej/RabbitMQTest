@@ -16,8 +16,8 @@ namespace RabbitMQBottom
                 type: ExchangeType.Fanout);
 
             // declare a server-named queue
-            QueueDeclareOk queueDeclareResult = await channel.QueueDeclareAsync();
-            string queueName = queueDeclareResult.QueueName;
+            string queueName = "pizzaqueue";
+            await channel.QueueDeclareAsync(queue: queueName, durable: true, exclusive: false, autoDelete: false);
             await channel.QueueBindAsync(queue: queueName, exchange: "logs", routingKey: string.Empty);
 
             Console.WriteLine(" [*] Waiting for logs.");
