@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="RabbitMQBottom/RabbitMQBottom.csproj" />
+  <Project Path="RabbitMQTop/RabbitMQTop.csproj" />
+</Solution>
